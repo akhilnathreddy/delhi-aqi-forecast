@@ -98,7 +98,32 @@ Each partition boundary has a 72 h embargo, so no target hour is shared between 
 
 ![fire seasons](reports/figures/map.png)
 
-Full tables and every figure: [`reports/RESULTS.md`](reports/RESULTS.md).
+Full tables and every figure: [`reports/RESULTS.md`](reports/RESULTS.md). The development log, with every problem hit along the way, how it was fixed, and the training and early-stopping details: [`docs/DEVLOG.md`](docs/DEVLOG.md).
+
+## Web app
+
+`streamlit_app.py` turns the project into a tool anyone can open:
+
+- **Live forecast.** One click fetches the latest CPCB station data, the newest GFS run and VIIRS fires (about 1–2 minutes; cached for 3 hours). It then runs the level-anchored ensemble trained on all data (`models/final/`) and shows the next 72 hours: a station map coloured by NAQI category, day 1–3 means for every station, the weather and smoke drivers, per-station fan charts and a CSV download.
+- **Backtest explorer.** Pick a station and any forecast from the two held-out test periods, and see what the models predicted against what actually happened. This uses the bundled `app/backtest.npz`, so it works without any downloads.
+
+The public OpenAQ archive lags real time by 2–4 days. When the newest observations are older than a few hours, the app rolls the model forward across the gap, issues the forecast from the current hour, and labels the filled stretch on every chart. With a free [OpenAQ API key](https://explore.openaq.org/register) it tops up the last days of PM2.5 from the OpenAQ v3 API instead. That code path follows the v3 docs but couldn't be exercised from the build environment, so check it once after you add the key.
+
+**Run locally**
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+**Deploy on Streamlit Community Cloud (free)**
+
+1. Go to [share.streamlit.io](https://share.streamlit.io), sign in with GitHub and click **Create app**.
+2. Choose this repository, branch `main`, main file `streamlit_app.py`.
+3. Optional: under **Advanced settings → Secrets**, add `OPENAQ_API_KEY = "your-key"` for near-real-time station data.
+4. Deploy. The first build installs CPU PyTorch and takes a few minutes.
+
+To refresh the served models after new data arrives: `make data build`, then `python -m aqf.cli train-final` and `python -m aqf.cli export-app`.
 
 ## Reproduce
 
@@ -119,14 +144,17 @@ Or open [`notebooks/colab_full_pipeline.ipynb`](notebooks/colab_full_pipeline.ip
 
 ```
 src/aqf/
-  data/        http.py · openaq.py · gfs.py · fires.py      raw-data downloaders
+  data/        http.py · openaq.py · openaq_api.py · gfs.py · fires.py      raw-data downloaders
   features.py  weather derivatives, fire transport, SAI, calendar (Diwali)
   dataset.py   hourly alignment, blocked folds, past/future/target tensors
   models/      baselines.py (persistence, climatology, LightGBM) · tft.py · stgnn.py
   train.py     quantile loss, early-stopped training, TFT interpretation
   metrics.py   point / daily NAQI / probabilistic scores
   experiment.py, report.py, cli.py
-tests/         20 unit tests (no network)
+  serve.py     train/save/load the serving bundle in models/final
+  live.py      issue a forecast now (fetch → build → predict, gap-filling stale observations)
+streamlit_app.py   the web app · app/backtest.npz its bundled backtest data
+tests/         22 unit tests (no network)
 ```
 
 ## Limitations and next steps
