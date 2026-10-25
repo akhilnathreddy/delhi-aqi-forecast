@@ -199,8 +199,25 @@ def download_firms(start: str, end: str, bbox: dict, out_dir: Path, source: str 
     return out
 
 
+def empty_fires() -> pd.DataFrame:
+    """A zero-row fire table with proper dtypes (so time arithmetic still works)."""
+    return pd.DataFrame(
+        {
+            "time": pd.Series(dtype="datetime64[us]"),
+            "lat": pd.Series(dtype="float32"),
+            "lon": pd.Series(dtype="float32"),
+            "frp": pd.Series(dtype="float32"),
+            "confidence": pd.Series(dtype="int16"),
+            "satellite": pd.Series(dtype=str),
+            "daynight": pd.Series(dtype=str),
+        }
+    )
+
+
 def load_fires(fire_dir: Path) -> pd.DataFrame:
-    files = sorted(Path(fire_dir).glob("*.parquet"))
-    if not files:
-        return pd.DataFrame(columns=COLUMNS)
-    return pd.concat([pd.read_parquet(f) for f in files], ignore_index=True).sort_values("time")
+    frames = [f for f in (pd.read_parquet(p) for p in sorted(Path(fire_dir).glob("*.parquet"))) if len(f)]
+    if not frames:
+        return empty_fires()
+    out = pd.concat(frames, ignore_index=True)
+    out["time"] = pd.to_datetime(out["time"])
+    return out.sort_values("time")

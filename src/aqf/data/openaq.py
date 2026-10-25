@@ -148,23 +148,36 @@ def download_station(loc_id: int, start: str, end: str, out_dir: Path, workers: 
     return out
 
 
-def load_panel(stations: pd.DataFrame, raw_dir: Path, start: str, end: str, min_coverage: float) -> pd.DataFrame:
+def load_panel(
+    stations: pd.DataFrame, raw_dir: Path, start: str, end: str, min_coverage: float, keep_all: bool = False
+) -> pd.DataFrame:
     """Stack station files into a (time × station) PM2.5 panel plus co-pollutants.
 
     Returns a long frame indexed by (time, location_id) on a complete hourly
     grid, and drops stations whose PM2.5 coverage is below ``min_coverage``.
+    With ``keep_all`` every station is kept (all-NaN if it has no file), which
+    live forecasting needs so the station order matches the trained models.
     """
     grid = pd.date_range(start, pd.Timestamp(end) + pd.Timedelta(hours=23), freq="h")
     frames = []
     for loc in stations["location_id"]:
         f = Path(raw_dir) / f"{loc}.parquet"
-        if not f.exists():
+        if not f.exists() and not keep_all:
             continue
-        d = pd.read_parquet(f).reindex(grid)
-        if "pm25" not in d or d["pm25"].notna().mean() < min_coverage:
+        d = pd.read_parquet(f).reindex(grid) if f.exists() else pd.DataFrame(index=grid, columns=["pm25"], dtype=float)
+        if not keep_all and ("pm25" not in d or d["pm25"].notna().mean() < min_coverage):
             log.info("dropping station %s (pm25 coverage %.2f)", loc, d.get("pm25", pd.Series(dtype=float)).notna().mean())
             continue
         d = d.reindex(columns=PARAMETERS)
         d["location_id"] = loc
         frames.append(d.rename_axis("time").reset_index())
     return pd.concat(frames).set_index(["time", "location_id"]).sort_index()
+
+
+def sensor_ids(loc_id: int, year: int) -> dict[str, int]:
+    """``{parameter: sensors_id}`` for a station, read from its latest archive file of ``year``."""
+    keys = [k for k, size in s3_list(BUCKET, f"{PREFIX}locationid={loc_id}/year={year}/") if size > 0]
+    if not keys:
+        return {}
+    rows = _parse(get(s3_url(BUCKET, sorted(keys)[-1])))
+    return {r["parameter"]: int(r["sensors_id"]) for r in rows if r.get("sensors_id")}

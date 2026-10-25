@@ -65,7 +65,8 @@ def _interp_leads(arr: np.ndarray, leads: np.ndarray, max_lead: int) -> np.ndarr
     for k in range(flat.shape[1]):
         col = flat[:, k]
         ok = ~np.isnan(col)
-        out[:, k] = np.interp(hours, leads[ok], col[ok]) if ok.sum() >= 2 else np.nan
+        # No extrapolation past the last lead a file holds (live runs fetch short leads for past days).
+        out[:, k] = np.interp(hours, leads[ok], col[ok], right=np.nan) if ok.sum() >= 2 else np.nan
     return out.reshape((len(hours),) + arr.shape[1:])
 
 
@@ -76,16 +77,20 @@ def network_of(name: str) -> str:
     return "OTHER"
 
 
-def build_dataset(cfg: Config) -> Path:
+def build_dataset(cfg: Config, stations: pd.DataFrame | None = None, keep_all: bool = False) -> Path:
+    """Write ``processed/dataset.npz``. ``stations``/``keep_all`` pin the station set (live runs)."""
     period, g = cfg["period"], cfg["gfs"]
     grid = g["grid"]
     times = pd.date_range(period["start"], pd.Timestamp(period["end"]) + pd.Timedelta(hours=23), freq="h")
     T = len(times)
 
     # ---- stations
-    stations = pd.read_csv(ROOT / "configs" / "stations.csv")
-    panel = load_panel(stations, cfg.data_dir / "raw" / "openaq", period["start"], period["end"], cfg["min_station_coverage"])
-    keep = sorted(panel.index.get_level_values("location_id").unique())
+    if stations is None:
+        stations = pd.read_csv(ROOT / "configs" / "stations.csv")
+    panel = load_panel(
+        stations, cfg.data_dir / "raw" / "openaq", period["start"], period["end"], cfg["min_station_coverage"], keep_all
+    )
+    keep = list(stations["location_id"]) if keep_all else sorted(panel.index.get_level_values("location_id").unique())
     stations = stations.set_index("location_id").loc[keep].reset_index()
     N = len(stations)
     wide = panel.unstack("location_id").reindex(times)
@@ -249,6 +254,17 @@ class ForecastData:
         self.mu_fa, self.sd_fa = self.fire_act[idx].mean(0), self.fire_act[idx].std(0) + 1e-6
         self.mu_sai, self.sd_sai = float(self.sai[idx, 0].mean()), float(self.sai[idx, 0].std() + 1e-6)
 
+    SCALER_KEYS = ("mu_y", "sd_y", "mu_pol", "sd_pol", "mu_wx", "sd_wx", "mu_fa", "sd_fa", "mu_sai", "sd_sai")
+
+    def scaler_state(self) -> dict:
+        return {k: np.asarray(getattr(self, k)).tolist() for k in self.SCALER_KEYS}
+
+    def load_scaler_state(self, state: dict):
+        """Reuse the training normalisation (live forecasting must not refit it)."""
+        for k in self.SCALER_KEYS:
+            v = np.asarray(state[k], np.float32)
+            setattr(self, k, float(v) if v.ndim == 0 else v)
+
     # ---------------------------------------------------------------- splits
     def origins(self, ranges, every_h: int = 6, gap_h: int = 72) -> np.ndarray:
         """Origins whose whole target window lies inside one of ``ranges``.
@@ -258,6 +274,8 @@ class ForecastData:
         """
         t = self.times
         keep = np.zeros(self.T, bool)
+        if not ranges:
+            return np.array([], int)
         for a, b in ranges:
             a = pd.Timestamp(a)
             b = pd.Timestamp(b) + pd.Timedelta(hours=23)
