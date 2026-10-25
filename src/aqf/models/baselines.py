@@ -181,6 +181,40 @@ class LightGBMForecaster:
         out.sort(-1)  # enforce non-crossing quantiles
         return out
 
+    def save(self, out_dir) -> list[str]:
+        from pathlib import Path
+
+        out_dir = Path(out_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        files = []
+        for q, m in self.models.items():
+            f = out_dir / f"lightgbm_q{int(round(q * 100)):02d}.txt"
+            m.booster_.save_model(str(f), num_iteration=m.best_iteration_ or -1)
+            files.append(f.name)
+        return files
+
+    @classmethod
+    def load(cls, in_dir, quantiles, drop=(), residual=True) -> LightGBMForecaster:
+        """Load saved boosters; ``predict`` then works exactly as after ``fit``."""
+        from pathlib import Path
+
+        import lightgbm as lgb
+
+        self = cls(quantiles, drop=drop, residual=residual)
+        self.models = {q: _Booster(lgb.Booster(model_file=str(Path(in_dir) / f"lightgbm_q{int(round(q * 100)):02d}.txt"))) for q in quantiles}
+        self.feature_names = self.models[quantiles[0]].booster_.feature_name()
+        return self
+
     def importance(self) -> pd.Series:
         m = self.models[0.5]
         return pd.Series(m.booster_.feature_importance("gain"), index=self.feature_names).sort_values(ascending=False)
+
+
+class _Booster:
+    """Adapter giving a loaded ``lgb.Booster`` the ``LGBMRegressor`` surface used above."""
+
+    def __init__(self, booster):
+        self.booster_ = booster
+
+    def predict(self, X):
+        return self.booster_.predict(X)

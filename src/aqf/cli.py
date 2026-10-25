@@ -62,6 +62,19 @@ def cmd_train(cfg, args):
     run(cfg, models=args.models.split(","), fold=args.fold, epochs=args.epochs)
 
 
+def cmd_train_final(cfg, args):
+    from .serve import train_final
+
+    train_final(cfg, models=tuple(args.models.split(",")))
+
+
+def cmd_export_app(cfg, args):
+    from .serve import add_sensor_ids, export_backtest
+
+    print("backtest data:", export_backtest(cfg))
+    print("sensor ids for", len(add_sensor_ids()), "stations")
+
+
 def cmd_report(cfg, args):
     from .report import make_report
 
@@ -94,6 +107,10 @@ def main(argv=None):
     s.add_argument("--epochs", type=int, default=None)
     s.set_defaults(fn=cmd_train)
     sub.add_parser("report", help="figures + markdown summary of all results").set_defaults(fn=cmd_report)
+    s = sub.add_parser("train-final", help="fit the serving models on all data into models/final")
+    s.add_argument("--models", default="lightgbm_resid,tft_anchored,stgnn_anchored")
+    s.set_defaults(fn=cmd_train_final)
+    sub.add_parser("export-app", help="write app/backtest.npz and OpenAQ sensor ids into the bundle").set_defaults(fn=cmd_export_app)
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
     args.fn(load_config(args.config), args)
