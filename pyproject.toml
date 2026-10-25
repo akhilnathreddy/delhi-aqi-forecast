@@ -23,6 +23,7 @@ dependencies = [
 
 [project.optional-dependencies]
 download = ["eccodes>=2.37", "netCDF4>=1.6"]
+app = ["streamlit>=1.50"]
 dev = ["pytest>=8", "ruff>=0.5"]
 
 [project.scripts]

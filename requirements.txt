@@ -1,0 +1,14 @@
+# Streamlit Community Cloud installs from this file. CPU-only PyTorch keeps the image small.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+streamlit>=1.50
+numpy>=1.26
+pandas>=2.1
+pyarrow>=14
+pyyaml>=6
+requests>=2.31
+lightgbm>=4.1
+scikit-learn>=1.3
+matplotlib>=3.8
+eccodes>=2.37
+netCDF4>=1.6
