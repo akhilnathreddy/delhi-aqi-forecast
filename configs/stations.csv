@@ -1,0 +1,101 @@
+location_id,name,lat,lon,network,parameters,first_year_seen
+17,"R K Puram, Delhi - DPCC",28.563262,77.186937,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+50,"Punjabi Bagh, Delhi - DPCC",28.674045,77.131023,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+235,"Anand Vihar, New Delhi - DPCC",28.646835,77.316032,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+301,"Vikas Sadan, Gurugram - HSPCB",28.4501238,77.0263051,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5404,"Pusa, Delhi - IMD",28.639645,77.146263,IMD,co|no|no2|o3|pm10|pm25,2025
+5541,"Burari Crossing, New Delhi - IMD",28.7256504,77.2011573,IMD,co|no|no2|o3|pm10|pm25,2025
+5570,"Aya Nagar, New Delhi - IMD",28.474261,77.131606,IMD,co|no|no2|o3|pm10|pm25,2025
+5586,"Sirifort, Delhi - CPCB",28.5504249,77.2159377,CPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5588,"RIICO Ind. Area III, Bhiwadi - RSPCB",28.194909,76.862296,RSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5598,"Sector - 125, Noida, UP - UPPCB",28.5447608,77.3231257,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5610,"North Campus, DU, Delhi - IMD",28.6573814,77.1585447,IMD,co|no|no2|o3|pm10|pm25,2025
+5613,"ITO, New Delhi - CPCB",28.628624,77.24106,CPCB,co|no|no2|o3|pm10|pm25|so2,2025
+5616,"Sector - 62, Noida, UP - IMD",28.6245479,77.3577104,IMD,co|no|no2|o3|pm10|pm25,2025
+5622,"NSIT Dwarka, Delhi - CPCB",28.60909,77.0325413,CPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5626,"DTU, New Delhi - CPCB",28.7500499,77.1112615,CPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5627,"CRRI Mathura Road, New Delhi - IMD",28.5512005,77.2735737,IMD,co|no|no2|o3|pm10|pm25,2025
+5630,"Shadipur, Delhi - CPCB",28.6514781,77.1473105,CPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+5634,"Lodhi Road, New Delhi - IMD",28.5918245,77.2273074,IMD,co|no|no2|o3|pm10|pm25,2025
+5650,"IGI Airport (T3), Delhi - IMD",28.5627763,77.1180053,IMD,co|no|no2|o3|pm10|pm25,2025
+5665,"Vasundhara, Ghaziabad - UPPCB",28.6603346,77.3572563,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6356,"Pusa, Delhi - DPCC",28.639645,77.146262,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6358,"Mandir Marg, New Delhi - DPCC",28.636429,77.201067,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6359,"IHBAS, Dilshad Garden,New Delhi - CPCB",28.6811736,77.3025234,CPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6924,"Indirapuram, Ghaziabad - UPPCB",28.646233,77.358075,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6929,"Major Dhyan Chand National Stadium, Delhi - DPCC",28.611281,77.237738,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6931,"Dwarka-Sector 8, Delhi - DPCC",28.5710274,77.0719006,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6932,"Alipur, Delhi - DPCC",28.815329,77.15301,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6934,"Dr. Karni Singh Shooting Range, Delhi - DPCC",28.498571,77.26484,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6936,"Arya Nagar, Bahadurgarh - HSPCB",28.6701,76.9254,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6938,"Vivek Vihar, Delhi - DPCC",28.672342,77.31526,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6949,"Municipal Corporation Office, Dharuhera -  HSPCB",28.2068,76.7997,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6951,"Murthal, Sonipat - HSPCB",29.0272,77.0621,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6953,"Sector-2 IMT, Manesar - HSPCB",28.360699,76.93609,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6957,"Jawaharlal Nehru Stadium, Delhi - DPCC",28.58028,77.233829,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6960,"Patparganj, Delhi - DPCC",28.623748,77.287205,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6972,"Nathu Colony, Ballabgarh - HSPCB",28.3419248,77.319699,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6976,"Jai Bhim Nagar, Meerut - UPPCB",28.9535882,77.7622941,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6978,"Knowledge Park - III, Greater Noida - UPPCB",28.47272,77.482,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6980,"Sector-1, Noida - UPPCB",28.589247,77.321962,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6986,"Knowledge Park - V, Greater Noida - UPPCB",28.557054,77.453663,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6988,"Sector-116, Noida - UPPCB",28.56923,77.393848,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+7005,"Loni, Ghaziabad - UPPCB",28.757294,77.278792,UPPCB,co|no|no2|pm10|pm25|relativehumidity|so2|temperature,2025
+7280,"Shyam Nagar, Palwal - HSPCB",28.1485564,77.3320667,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+7283,"MD University, Rohtak - HSPCB",28.87793,76.620825,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+7720,"Pallavpuram Phase 2, Meerut - UPPCB",29.06351,77.709723,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+7833,"Ganga Nagar, Meerut - UPPCB",28.999264,77.7590354,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8118,New Delhi,28.63576,77.22445,US-EMBASSY,pm25,2025
+8235,"Jahangirpuri, Delhi - DPCC",28.73282,77.170633,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8239,"Okhla Phase-2, Delhi - DPCC",28.530785,77.271255,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8319,"Anand Vihar, Hapur - UPPCB",28.725645,77.749675,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8365,"Nehru Nagar, Delhi - DPCC",28.56789,77.250515,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8472,"Bawana, Delhi - DPCC",28.7762,77.051074,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8475,"Sonia Vihar, Delhi - DPCC",28.710508,77.249485,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8915,"Wazirpur, Delhi - DPCC",28.699793,77.165453,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+8917,"Ashok Vihar, Delhi - DPCC",28.695381,77.181665,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10484,"Sri Aurobindo Marg, Delhi - DPCC",28.531346,77.190156,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10485,"Narela, Delhi - DPCC",28.822836,77.101981,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10486,"Mundka, Delhi - DPCC",28.684678,77.076574,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10488,"Najafgarh, Delhi - DPCC",28.570173,76.933762,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10820,"Sector 30, Faridabad - HSPCB",28.4417,77.3217,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10825,"Sector-51, Gurugram - HSPCB",28.4227,77.0667,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10831,"Rohini, Delhi - DPCC",28.732528,77.11992,DPCC,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10900,"Teri Gram, Gurugram - HSPCB",28.4275,77.1465,HSPCB,o3|pm10|pm25|relativehumidity|temperature,2025
+10908,"Sector 11, Faridabad - HSPCB",28.376058,77.315741,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10919,"Sanjay Nagar, Ghaziabad - UPPCB",28.685382,77.453839,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10920,"New Industrial Town, Faridabad - HSPCB",28.39072,77.30059,HSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+10921,"NISE Gwal Pahari, Gurugram - IMD",28.422681,77.148944,IMD,co|no|no2|o3|pm10|pm25,2025
+11603,"Chandni Chowk, Delhi - IITM",28.656756,77.227234,IITM,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+11607,"Lodhi Road, Delhi - IITM",28.588333,77.221667,IITM,no2|pm10|pm25|relativehumidity|so2|temperature,2025
+301388,"Sardar Patel Inter College, Baghpat - UPPCB",28.964949,77.278761,UPPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+3409496,"New Moti Bagh, Delhi - MHUA",28.57834,77.184,MHUA,co|no|no2|nox|pm25|relativehumidity|temperature|wind_direction|wind_speed,2026
+3409519,"Vasundhara Nagar_UIT, Bhiwadi - RSPCB",28.207266,76.829265,RSPCB,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+3410004,"Amity University, Panchgaon - IITM",28.3153,76.9143,IITM,co|no|no2|o3|pm10|pm25|relativehumidity|so2|temperature,2025
+6148686,"IIT Delhi, Delhi - IITM",28.54246,77.191651,IITM,co|no|no2|nox|o3|pm10|pm25,2025
+6254594,"Talkatora Garden, Delhi - DPCC",28.62181,77.1944633,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6254663,"JNU, Delhi - DPCC",28.540721,77.168544,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6254664,"NSUT Jaffarpur, Delhi - DPCC",28.594004,76.909423,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6254665,"Commonwealth Sports Complex, Delhi - DPCC",28.615828,77.271992,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6254666,"IGNOU_Maidan Garhi, Delhi - DPCC",28.493624,77.201159,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6257818,"Cantonment Area, Delhi - DPCC",28.594169,77.1251,DPCC,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6299494,"Prashant Garden, Khora - UPPCB",28.61119,77.34206,UPPCB,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6299603,"SRM University, Modinagar - UPPCB",28.798171,77.540243,UPPCB,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6299678,"Ved Vihar-Loni, Ghaziabad - UPPCB",28.739153,77.273668,UPPCB,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6311324,"Govindpuram, Ghaziabad - UPPCB",28.694528,77.494705,UPPCB,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6311325,"MIET College, Meerut - UPPCB",28.972677,77.641018,UPPCB,co|no|no2|nox|o3|pm10|pm25|relativehumidity|so2|temperature|wind_direction|wind_speed,2026
+6458520,"Wave City, Ghaziabad - UPPCB",28.646675,77.489049,UPPCB,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6487074,"Nagar Palika Parishad, Baraut - UPPCB",29.09956,77.26235,UPPCB,co|no|no2|nox|o3|pm10|pm25|so2|wind_direction|wind_speed,2026
+6551422,"Badarpur,Delhi-DPCC",28.513305,77.32634,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551430,"Burari,Delhi-DPCC",28.769667,77.206805,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551431,"Vasundhara Enclave, Delhi - DPCC",28.603699,77.321644,DPCC,co|o3|pm10|pm25|so2,2026
+6551457,"Chhawla,Delhi-DPCC",28.553573,76.993845,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551492,"Maidan Garhi ,Delhi-DPCC",28.475672,77.213538,DPCC,co|o3|pm10|pm25|relativehumidity|so2|wind_direction|wind_speed,2026
+6551493,"Jharoda Kalan, Delhi-DPCC",28.645274,76.956375,DPCC,co|no|no2|nox|pm10|pm25|so2,2026
+6551494,"Ghummanhera ,Delhi-DPCC",28.534762,76.91609,DPCC,co|no|no2|nox|o3|pm10|pm25,2026
+6551495,"Karala,Delhi-DPCC",28.7313303,77.0402585,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551496,"Nangloi,Delhi-DPCC",28.6835525,77.0742812,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551499,"Narela , Delhi - DPCC",28.858447,77.095248,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551504,"Uttam Nagar ,Delhi-DPCC",28.6375265,77.0571176,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551517,"Tikri Kalan ,Delhi-DPCC",28.67518,76.980506,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
+6551518,"Ghoga ,Delhi-DPCC",28.818435,77.057932,DPCC,co|no|no2|nox|o3|pm10|pm25|so2,2026
