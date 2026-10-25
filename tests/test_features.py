@@ -71,3 +71,13 @@ def test_inversion_sign():
          "prate": np.array([0.0]), "tcc": np.array([0.0])}
     w = fe.derive_weather(f)
     assert w["inversion"][0] == 3.0 and np.isclose(w["log_vent"][0], np.log1p(100.0))
+
+
+def test_no_fires_gives_zero_smoke():
+    from aqf.data.fires import empty_fires
+
+    times = pd.date_range("2025-11-01", periods=48, freq="h")
+    u, v = _wind(times, 5.0, -5.0)
+    f = fe.fire_transport(empty_fires(), u, v)
+    assert fe.smoke_arrival_index(f, times, horizon=24).sum() == 0
+    assert fe.fire_activity(f, times).to_numpy().sum() == 0
