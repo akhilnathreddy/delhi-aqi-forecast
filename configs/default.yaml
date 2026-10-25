@@ -1,0 +1,56 @@
+# Delhi-NCR PM2.5 forecasting — default experiment configuration.
+# All times are UTC unless a key says otherwise.
+
+data_dir: data
+reports_dir: reports
+
+# The OpenAQ archive holds the current CPCB feeds from 2025-02-18 onwards.
+period:
+  start: "2025-02-19"
+  end: "2026-10-20"
+
+# Monitoring stations: anything inside this box with PM2.5 reported in the
+# OpenAQ archive (CPCB/DPCC/HSPCB/UPPCB/IMD/IITM networks).
+ncr_bbox: {lat_min: 28.0, lat_max: 29.1, lon_min: 76.6, lon_max: 77.8}
+min_station_coverage: 0.6        # fraction of valid hourly PM2.5 needed to keep a station
+
+# Fire detections are kept for the wider upwind source region (Indian and
+# Pakistani Punjab, Haryana, western UP, northern Rajasthan).
+fire_bbox: {lat_min: 24.0, lat_max: 34.0, lon_min: 68.0, lon_max: 82.0}
+fire_satellites: [npp, n20]       # Suomi-NPP and NOAA-20 VIIRS (FIRMS VIIRS 375 m equivalents)
+
+# GFS 1.0° forecasts, 00Z cycle, 3-hourly leads. Leads 0..21 act as the
+# best-available "analysis" of the past; leads up to 102 h are the future
+# covariates for forecast origins issued during the day.
+gfs:
+  cycle: 0
+  max_lead: 102
+  availability_lag_h: 5           # 00Z run is usable from 05 UTC
+  grid: {lat_min: 24, lat_max: 34, lon_min: 68, lon_max: 82}
+
+forecast:
+  horizon: 72                     # hours
+  encoder_length: 168             # hours of history fed to sequence models
+  origin_every_h: 6               # forecast issue frequency for training samples
+  report_horizons: [24, 48, 72]
+
+# Blocked chronological folds. Origins are kept only if their whole 72 h target
+# window lies inside the partition, and the first ``gap_h`` hours after any
+# partition boundary are skipped, so no target hour is shared across partitions.
+split:
+  gap_h: 72
+  folds:
+    # Forward-in-time: train on spring 2025 → winter 2025-26, test on monsoon →
+    # post-monsoon 2026 including the start of the 2026 stubble season.
+    main:
+      train: [["2025-02-19", "2026-03-31"]]
+      val: [["2026-04-01", "2026-06-30"]]
+      test: [["2026-07-01", "2026-10-20"]]
+    # Held-out season: the 2025 stubble-burning + early-winter peak.
+    winter:
+      train: [["2025-02-19", "2025-08-09"], ["2026-01-01", "2026-10-20"]]
+      val: [["2025-08-10", "2025-09-30"]]
+      test: [["2025-10-01", "2025-12-31"]]
+
+quantiles: [0.1, 0.5, 0.9]
+seed: 42
