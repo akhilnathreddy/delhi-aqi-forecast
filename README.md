@@ -1,5 +1,12 @@
 # Delhi-NCR PM2.5 forecasting — 24 to 72 hours ahead
 
+[![Live demo](https://img.shields.io/badge/Live%20demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://delhi-aqi-forecast-ml.streamlit.app/)
+[![CI](https://github.com/akhilnathreddy/delhi-aqi-forecast/actions/workflows/ci.yml/badge.svg)](https://github.com/akhilnathreddy/delhi-aqi-forecast/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
+
+**Try it:** [delhi-aqi-forecast-ml.streamlit.app](https://delhi-aqi-forecast-ml.streamlit.app/) gives a live 72-hour forecast for every station, plus a backtest explorer.
+
 Multi-source, multi-horizon forecasts of hourly PM2.5 for **56 regulatory monitoring stations** across Delhi, Gurugram, Noida, Ghaziabad, Faridabad and the wider NCR. The models fuse three real, public data streams:
 
 | Source | What | How it is fetched |
